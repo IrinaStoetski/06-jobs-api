@@ -57,7 +57,8 @@ const updateJob = async (req, res) => {
 };
 
 const deleteJob = async (req, res) => {
-  res.send("deleteJob route");
+  await Job.deleteOne({ _id: req.params.id });
+  res.status(StatusCodes.OK).json({ msg: "The entry was deleted." });
 };
 
 module.exports = {
